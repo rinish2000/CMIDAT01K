@@ -17,8 +17,11 @@ De gehele opdracht is geschreven door middel van de PlatformIO extension binnen 
 ├───docs
 │       Diagram.pdf
 │
-└───src
-        main.cpp
+├───src
+│       main.cpp
+│
+└───video
+        Demo-CMIDAT01K.mp4
 ```
 
 ## Diagram
