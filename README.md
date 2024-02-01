@@ -21,3 +21,5 @@ De gehele opdracht is geschreven door middel van de PlatformIO extension binnen 
         main.cpp
 ```
 
+## Diagram
+![Diagram](docs/Diagram.png)
