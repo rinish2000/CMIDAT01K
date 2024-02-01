@@ -43,24 +43,18 @@ void loop() {
   if (now - lastMsg > 1000) {
     lastMsg = now;
 
-  sensors_event_t humidity, temp;
-  aht.getEvent(&humidity, &temp);
-  Serial.print("Temperature: "); Serial.print(temp.temperature); Serial.println(" degrees C");
-  Serial.print("Humidity: "); Serial.print(humidity.relative_humidity); Serial.println("% rH");
+    sensors_event_t humidity, temp;
+    aht.getEvent(&humidity, &temp);
+    Serial.print("Temperature: "); Serial.print(temp.temperature); Serial.println("°C");
+    // Serial.print("Humidity: "); Serial.print(humidity.relative_humidity); Serial.println("% rH");
 
-  char tempString[8];
-  dtostrf(temp.temperature, 1, 2, tempString);
-  // Serial.print("Temperature: ");
-  // Serial.println(tempString);
-  client.publish("channels/2413685/publish/fields/field1", tempString);
+    char tempString[8];
+    dtostrf(temp.temperature, 1, 2, tempString);
+    // Serial.print("Temperature: ");
+    // Serial.println(tempString);
+    client.publish("channels/2413685/publish/fields/field1", tempString);
 
-  char humidityString[8];
-  dtostrf(humidity.relative_humidity, 1, 2, humidityString);
-  Serial.print("Humidity: ");
-  Serial.println(humidityString);
-  client.publish("channels/2413685/publish/fields/field2", humidityString);
-  delay(500);
-
+    delay(500);
   }
 }
 
@@ -91,8 +85,7 @@ void reconnect() {
     // Attempt to connect
     if (client.connect("LicAJS4REwwfGiAvNwMLKw8","LicAJS4REwwfGiAvNwMLKw8","Jrc78c2GLTldJFoEyw3s4hec")) {
       Serial.println("connected");
-      // Subscribe
-      // client.subscribe("channels/2413685/publish/fields/field1");
+
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
