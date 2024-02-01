@@ -4,8 +4,8 @@
 
 Adafruit_AHTX0 aht;
 
-const char* ssid = "Linksys05662";
-const char* password = "exoticraccoon056";
+const char* ssid = "";
+const char* password = "";
 
 const char* mqtt_server = "mqtt3.thingspeak.com";
 
@@ -58,9 +58,9 @@ void loop() {
   }
 }
 
+// Connect to network
 void setup_wifi() {
   delay(10);
-  // We start by connecting to a WiFi network
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
@@ -78,11 +78,11 @@ void setup_wifi() {
   Serial.println(WiFi.localIP());
 }
 
+// connect to mqtt broker
 void reconnect() {
-  // Loop until we're reconnected
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
-    // Attempt to connect
+    // Connect using credentials
     if (client.connect("LicAJS4REwwfGiAvNwMLKw8","LicAJS4REwwfGiAvNwMLKw8","Jrc78c2GLTldJFoEyw3s4hec")) {
       Serial.println("connected");
 
@@ -90,7 +90,6 @@ void reconnect() {
       Serial.print("failed, rc=");
       Serial.print(client.state());
       Serial.println(" try again in 5 seconds");
-      // Wait 5 seconds before retrying
       delay(5000);
     }
   }
